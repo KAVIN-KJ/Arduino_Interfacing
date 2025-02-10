@@ -7,10 +7,11 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-let lastCommand = "reset"; 
+let lastCommand = "none";
 
 app.get("/latest-command", (req, res) => {
     res.json({ command: lastCommand });
+    lastCommand = "none";
 });
 
 app.post("/send-command", (req, res) => {
